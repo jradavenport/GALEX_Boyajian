@@ -1,0 +1,232 @@
+\documentclass[manuscript, letterpaper]{aastex6}
+%\documentclass[twocolumn, trackchanges]{aastex6}
+%\documentclass[twocolumn]{aastex6}
+
+\bibliographystyle{aasjournal}
+
+\usepackage{graphicx}
+\usepackage[suffix=]{epstopdf}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{xspace}
+
+% from here: https://github.com/dfm/peerless/blob/master/document/ms.tex#L19-L69
+% ----------------------------------- %
+% start of AASTeX mods by DWH and DFM %
+% ----------------------------------- %
+\setlength{\voffset}{0in}
+\setlength{\hoffset}{0in}
+\setlength{\textwidth}{6in}
+\setlength{\textheight}{9in}
+\setlength{\headheight}{0ex}
+\setlength{\headsep}{\baselinestretch\baselineskip} % this is 2 lines in ``manuscript''
+\setlength{\footnotesep}{0in}
+\setlength{\topmargin}{-\headsep}
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\evensidemargin}{0.25in}
+\linespread{0.54} % close to 10/13 spacing in ``manuscript''
+\setlength{\parindent}{0.54\baselineskip}
+%\hypersetup{colorlinks = false}
+\makeatletter % you know you are living your life wrong when you need to do this
+\long\def\frontmatter@title@above{
+\vspace*{-\headsep}\vspace*{\headheight}
+\noindent\footnotesize
+{\noindent\footnotesize\textsc{\@journalinfo}}\par
+{\noindent\scriptsize Preprint typeset using \LaTeX\ style AASTeX6\\
+With modifications by David W. Hogg and Daniel Foreman-Mackey
+}\par\vspace*{-\baselineskip}\vspace*{0.625in}
+}%
+\makeatother
+% Section spacing:
+\makeatletter
+\let\origsection\section
+\renewcommand\section{\@ifstar{\starsection}{\nostarsection}}
+\newcommand\nostarsection[1]{\sectionprelude\origsection{#1}}
+\newcommand\starsection[1]{\sectionprelude\origsection*{#1}}
+\newcommand\sectionprelude{\vspace{1em}}
+\let\origsubsection\subsection
+\renewcommand\subsection{\@ifstar{\starsubsection}{\nostarsubsection}}
+\newcommand\nostarsubsection[1]{\subsectionprelude\origsubsection{#1}}
+\newcommand\starsubsection[1]{\subsectionprelude\origsubsection*{#1}}
+\newcommand\subsectionprelude{\vspace{1em}}
+\makeatother
+\widowpenalty=10000
+\clubpenalty=10000
+\sloppy\sloppypar
+% ------------------ %
+% end of AASTeX mods %
+% ------------------ %
+
+
+%    Make Scientific Notation
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+
+% make the word Kepler italicized
+\newcommand{\Kepler}{\textsl{Kepler}\xspace}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\title{The GALEX View of ``Boyajian's Star''}
+
+\shorttitle{Rotating Stars}
+\shortauthors{Davenport}
+
+\author{
+	James R. A. Davenport\altaffilmark{1,2}
+	Riley W. Clarke\altaffilmark{1}
+	Zachery Laycock\altaffilmark{1}
+	Kevin R. Covey\altaffilmark{1}
+	scott flemming\altaffilmark{3}
+	tabby boyajian\altaffilmark{4}
+	Bernie Shiao\altaffilmark{3}
+	chase million\altaffilmark{5}
+	ben montet\altaffilmark{6}
+	david wilson\altaffilmark{7}
+	Manuel Olmedo\altaffilmark{8}
+	eric mamajek\altaffilmark{9}
+	}
+
+\altaffiltext{1}{Department of Physics \& Astronomy, Western Washington University, 516 High St., Bellingham, WA 98225, USA}
+\altaffiltext{2}{NSF Astronomy and Astrophysics Postdoctoral Fellow}
+ 
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+The enigmatic star KIC 8462852, also known as ``Boyajian's Star'',  has puzzled for both its short (days) length dimming events, and a years-long secular dimming observed by the \Kepler mission.
+GALEX provides both short timescale sampling from the photon-counting data, and longer baseline data from multiple campaigns that imaged this field/ also providing a wide wavelength baseline to compare with the optical \Kepler data, and provide important constraint for models of this system.
+here we investigate both the short and long timescale data. from 4 GALEX visits totaling 1600 seconds of exposure time in 2011, spread over 70 days, we find no coherent NUV variability in the system on 10--100 sec timescales during these time windows. Comparing the integrated flux from these 2011 visits to the 2012 NUV flux published in the GALEX-CAUSE Kepler survey, we find a 3\% decrease in brightness of KIC 8462852. This decrease is the first independent validation of the secular fading reported by \citet{montet2016}. The similar amplitudes between the NUV and optical data rule out typical interstellar dust as the cause of this fading.
+\end{abstract}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+The \Kepler mission \citep{borucki2010} 
+
+found this F3 star with strange dips \citet{boyajian2015}. further mystery, the star slowly fades over the time of the \Kepler mission \citet{montet2016}
+
+debated fading also over a century from photographic plate archive \citet{schaefer2016} for, \citet{hippke2016} against.
+
+
+
+The GALEX mission \citep{galex}
+
+time-tagged photon archive data \citep{million2016} is available via the gPhoton Python toolkit \citep{gphoton}.
+
+GCK catalog \citep{olmedo2015} for the 2012 visit, which overlapped Q14 of the \Kepler mission.
+
+
+
+
+search for infrared flux excess, no strong detection found
+\citep{marengo2015}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Short Timescale Variability}
+
+gphoton gives us unique ability look for short timescale variations in the NUV.  In Figure \ref{fig:shorttime} we show the four GALEX visits covering KIC 8462852, sampled at a 10-second cadence. small variations are seen in some of the visits. we re-sampled the data at 9- and 11-sec cadence, and these are visible in each. computing a Lomb-Scargle periodogram using {\tt gatspy} \citep{gatspy} shows moderate power around 80-seconds. They appear to be primarily due to the $\sim$120 second observing cycle of the GALEX instrument in ``Petal Pattern'' mode 
+A periodic signal of 0.88 days was found in \Kepler, which was presumed by \citet{boyajian2015} to be due to stellar rotation. our data are not able to verify this timescale.
+
+nanosecond optical variability has been searched for this star \citep{abeysekara2016}, but not much else shorter than was available at 30-min cadence with \Kepler.
+
+
+%%%%%
+\begin{figure*}[]
+\centering
+\includegraphics[width=2.5in]{KIC8462852_0_lc}
+\includegraphics[width=2.5in]{KIC8462852_1_lc}\\
+\includegraphics[width=2.5in]{KIC8462852_2_lc}
+\includegraphics[width=2.5in]{KIC8462852_3_lc}
+\caption{
+10-second light curves from gPhoton for the 4 visits in 2012. All epochs shown (grey), and those that have no photometric warning flags set (blue), with the photometric errors for each point computed}
+\label{fig:shorttime}
+\end{figure*}
+
+
+Since the GPhton data for this target is spread over four separate visits, we can also examine the medium-timescale variability over $\sim$70 days. In Figure \ref{fig:medtime} we show the median flux from within each of the GPhoton visits. No significant variability is seen between these visits.
+
+%%%%%
+\begin{figure}[]
+\centering
+\includegraphics[width=3.5in]{KIC8462852}
+\caption{median flux of the 10-sec sampled data over the $\sim$70 days of 2011 visits by GALEX. Uncertainties shown are the standard deviation in fluxes within each 10-sec sampled visit from Figure \ref{fig:shorttime}.
+}
+\label{fig:medtime}
+\end{figure}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Long Timescale Variability}
+
+While the standard GALEX survey data available within GPhoton only sampled $\sim$70 days within 2011, the \Kepler field was fortunately observed again by the CAUSE/GCK survey. [INSERT DETAILS OF THIS DATA]. A catalog of the integrated fluxes and uncertainties for \Kepler targets observed in the CAUSE survey was made available by \citet{olmedo2015}
+
+
+In Figure \ref{fig:longtime} we present the GALEX data for this target as observed in 2011 and 2013. The 2011 data is the final GALEX GR6 catalog flux for KIC NNNN of $16.46 \pm 0.01$ from \citet{bianchi2014}, while the 2013 data is from the GCK data of $16.499\pm0.006$ \citet{olmedo2015}. Both data were converted to fluxes and were normalized to the flux of the 2011 visit. For comparison we also show the FFI decay from \citet{montet2016}. Note: the fact that the GALEX and \Kepler FFI data are normalized to a relative flux of 1 around 2011 (MJD$\sim$55700) is a coincidence. However, the GALEX flux decays with the \Kepler FFI flux over this time baseline
+
+%%%%%
+\begin{figure}[]
+\centering
+\includegraphics[width=3.5in]{KIC8462852_compare}
+\caption{comparison of 2011 and 2012 fluxes (blue), with the \Kepler FFI data shown in \citet{montet2016} but reduced with the new ``f3'' package from \citet{montet2017} for comparison (black squares).}
+\label{fig:longtime}
+\end{figure}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Implications for the Nature of KIC 8462852}
+
+
+fit with \citet{cardelli1989} dust model, using Python code from \citet{barbary2016}.
+
+
+
+\citet{metzger2017} argued long-time fading due to stellar atmosphere recovery after a planetary in-spiral. (and possibly short-time dips due to debris) 
+
+our added data from GALEX adds important constraint on the nature of the long timescale fading. If its dust, must have $R_V=5.0\pm0.9$ to satisfy the optical and NUV dimming. This is not typical for interstellar extinction material, though is seen for young protostars \citep[e.g.][]{hecht1982}. based on different prescriptions of the NUV extinction law, which can be very sensitive to the large ``bump'' near the GALEX NUV center wavelength.  
+for example, models from \citet{fitzpatrick2009}give $R_V=5.8\pm1.6$
+
+
+If the slow variability is due to dust, we can further put a weak constraint on how much dust should be present. Based on relations from \citep{guver2009}, we find that an extinction of $A_V = 0.026$ mag corresponds to 
+a column density of $N_H\sim5\e{19}$ cm$^{-2}$ . Similarly, using the relations from \citet{rachford2002} that have some dependence on dust composition ($R_V$), we get an estimated $N_H\sim4.0\e{19}$ cm$^{-2}$ .
+
+%%%%%
+\begin{figure}[]
+\centering
+\includegraphics[width=3.5in]{KIC8462852_extinction_model_1}
+\caption{comparison of observed flux and a $R_V=3.1$ dust model}
+\label{fig:dust}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary}
+we have provided the first independent verification of slow fading of this target
+
+though the long timescale light curve is very sparsely sampled, the combination of NUV and optical wavelengths provides a powerful constrain on the nature of this slow dimming. 
+
+In the hunt for other objects of this class, we are able to expand our search criteria beyond the dramatic short timescale events and slow dimming observed with \Kepler, to now include slow variability in the NUV. 
+
+
+
+%%%%%%%%%%%%%%%%%
+\acknowledgments
+JRAD is supported by an NSF Astronomy and Astrophysics Postdoctoral Fellowship under award AST-1501418. 
+
+
+%%%%%%%%%%%%%%%%%
+\bibliography{/Users/davenpj3/Dropbox/references.bib}
+
+\end{document}
