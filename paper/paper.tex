@@ -27,17 +27,17 @@
 \shortauthors{Davenport et al.}
 
 \author{
-	James R. A. Davenport\altaffilmark{1,2}
-	Riley W. Clarke\altaffilmark{1}
-	Zachery Laycock\altaffilmark{1}\\
-	Kevin R. Covey\altaffilmark{1}
-	Scott W. Flemming\altaffilmark{3}
-	Tabetha S. Boyajian\altaffilmark{4}
-	Benjamin T. Montet\altaffilmark{5}\\
-	Bernie Shiao\altaffilmark{3}
-	Chase C. Million\altaffilmark{6}
-	David J. Wilson\altaffilmark{7}
-	Manuel Olmedo\altaffilmark{8}
+	James R. A. Davenport\altaffilmark{1,2},
+	Riley W. Clarke\altaffilmark{1},
+	Zachery Laycock\altaffilmark{1},\\
+	Kevin R. Covey\altaffilmark{1},
+	Scott W. Flemming\altaffilmark{3},
+	Tabetha S. Boyajian\altaffilmark{4},
+	Benjamin T. Montet\altaffilmark{5},\\
+	Bernie Shiao\altaffilmark{3},
+	Chase C. Million\altaffilmark{6},
+	David J. Wilson\altaffilmark{7},
+	Manuel Olmedo\altaffilmark{8},
 	Eric E. Mamajek\altaffilmark{9}
 	}
 
@@ -49,6 +49,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
+{\bf rewrite!}
 The enigmatic star KIC 8462852, also known as ``Boyajian's Star'',  has puzzled for both its short (days) length dimming events, and a years-long secular dimming observed by the \Kepler mission.
 GALEX provides both short timescale sampling from the photon-counting data, and longer baseline data from multiple campaigns that imaged this field/ also providing a wide wavelength baseline to compare with the optical \Kepler data, and provide important constraint for models of this system.
 here we investigate both the short and long timescale data. from 4 GALEX visits totaling 1600 seconds of exposure time in 2011, spread over 70 days, we find no coherent NUV variability in the system on 10--100 sec timescales during these time windows. Comparing the integrated flux from these 2011 visits to the 2012 NUV flux published in the GALEX-CAUSE Kepler survey, we find a 3\% decrease in brightness of KIC 8462852. This decrease is the first  validation of the secular fading reported by \citet{montet2016} not in optical wavelengths. The similar amplitudes between the NUV and optical data rule out typical interstellar dust as the cause of this fading.
@@ -86,7 +87,7 @@ In \S\ref{sec:dust} we discuss possible interpretations for the nature of KIC 84
 \includegraphics[width=2.7in]{KIC8462852_2_lc}
 \includegraphics[width=2.7in]{KIC8462852_3_lc}
 \caption{
-10-second light curves from gPhoton for the 4 visits in 2012. All epochs shown (grey), and those that have no photometric warning flags set (blue), with the photometric errors for each point computed}
+Light curves from {\tt gPhoton} sampled at a 20-second cadence for the 4 visits in 2012. All epochs are shown (grey), while those having no photometric warning flags set are highlight (blue). Error bars shown are the photometric errors for each point computed by {\tt gPhoton}.}
 \label{fig:shorttime}
 \end{figure}
 
@@ -96,20 +97,21 @@ In \S\ref{sec:dust} we discuss possible interpretations for the nature of KIC 84
 \section{Short Timescale Variability}
 \label{sec:short}
 
-gphoton gives us unique ability look for short timescale variations in the NUV.  In Figure \ref{fig:shorttime} we show the four GALEX visits covering KIC 8462852, sampled at a 10-second cadence. small variations are seen in some of the visits. we re-sampled the data at 9- and 11-sec cadence, and these are visible in each. computing a Lomb-Scargle periodogram using {\tt gatspy} \citep{gatspy} shows moderate power around 80-seconds. They appear to be primarily due to the $\sim$120 second observing cycle of the GALEX instrument in ``Petal Pattern'' mode 
+Within each of the four GALEX visits available for KIC 8462852, we searched for short timescale variability using {\tt gPhoton}. While nano-second optical variability has been investigated for this target \citep{abeysekara2016}, few other studies have looked at variability on timescales shorter than the 30-minute cadence available with \Kepler.
+The four GALEX visits in 2011 ranged from $\sim$70 to $\sim$1400 seconds in duration. Data for each visit was sampled at a 20 second cadence, as shown in Figure \ref{fig:shorttime}. Small amplitude variability is apparent in several of the visits, with coherent structure over durations of approximately 60-100 seconds. Computing a Lomb-Scargle periodogram using {\tt gatspy} \citep{gatspy}, we find moderate power with a shows moderate power around 80-seconds. They appear to be primarily due to the $\sim$120 second observing cycle of the GALEX instrument in ``Petal Pattern'' mode 
 A periodic signal of 0.88 days was found in \Kepler, which was presumed by \citet{boyajian2015} to be due to stellar rotation. our data are not able to verify this timescale.
 
-nanosecond optical variability has been searched for this star \citep{abeysekara2016}, but not much else shorter than was available at 30-min cadence with \Kepler.
 
 
 
-Since the GPhton data for this target is spread over four separate visits, we can also examine the medium-timescale variability over $\sim$70 days. In Figure \ref{fig:medtime} we show the median flux from within each of the GPhoton visits. No significant variability is seen between these visits.
+Since the {\tt gPhoton} data for this target is spread over four separate visits, we can also examine the medium-timescale variability over $\sim$70 days. In Figure \ref{fig:medtime} we show the median flux from within each of the {\tt gPhoton} visits. No significant variability is seen between these visits.
+
 
 %%%%%
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=3.5in]{KIC8462852}
-\caption{median flux of the 10-sec sampled data over the $\sim$70 days of 2011 visits by GALEX. Uncertainties shown are the standard deviation in fluxes within each 10-sec sampled visit from Figure \ref{fig:shorttime}.
+\caption{Median flux within each of the four visits spaced over $\sim$70 days in 2011 by GALEX. Uncertainties shown are the standard deviation in flux within each 20-sec sampled {\tt gPhoton} light curves from Figure \ref{fig:shorttime}. No significant change in flux is seen over this 70 day window.
 }
 \label{fig:medtime}
 \end{figure}
@@ -126,12 +128,14 @@ Since the GPhton data for this target is spread over four separate visits, we ca
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=3.5in]{KIC8462852_compare}
-\caption{comparison of 2011 and 2012 fluxes (blue circles), with the \Kepler FFI data shown in \citet{montet2016} but reduced with the new ``f3'' package from \citet{montet2017} for comparison (grey squares).}
+\caption{
+Comparison of the 2011 and 2012 fluxes  for KIC 8462852 as measured by GALEX (blue circles), with the \Kepler FFI data shown in \citet{montet2016} as reduced with the new ``f3'' package from \citet{montet2017} for comparison (grey squares). The amplitude of variability over this time window is nearly identical between the two surveys.
+}
 \label{fig:longtime}
 \end{figure}
 
 
-While the standard GALEX survey data available within GPhoton only sampled $\sim$70 days within 2011, the \Kepler field was fortunately observed again by the CAUSE/GCK survey. [INSERT DETAILS OF THIS DATA]. A catalog of the integrated fluxes and uncertainties for \Kepler targets observed in the CAUSE survey was made available by \citet{olmedo2015}
+While the standard GALEX survey data available within {\tt gPhoton} only sampled $\sim$70 days within 2011, the \Kepler field was fortunately observed again by the CAUSE/GCK survey. [INSERT DETAILS OF THIS DATA]. A catalog of the integrated fluxes and uncertainties for \Kepler targets observed in the CAUSE survey was made available by \citet{olmedo2015}
 
 
 In Figure \ref{fig:longtime} we present the GALEX data for this target as observed in 2011 and 2012. The 2011 data is the final GALEX GR6 catalog flux for KIC NNNN of $16.46 \pm 0.01$ from \citet{bianchi2014}, while the 2012 data is from the GCK data of $16.499\pm0.006$ \citet{olmedo2015}. Both data were converted to fluxes and were normalized to the flux of the 2011 visit. For comparison we also show the FFI decay from \citet{montet2016}. Note: the fact that the GALEX and \Kepler FFI data are normalized to a relative flux of 1 around 2011 (MJD$\sim$55700) is a coincidence. However, the GALEX flux decays with the \Kepler FFI flux over this time baseline
@@ -173,6 +177,8 @@ a column density of $N_H\sim5\e{19}$ cm$^{-2}$ . Similarly, using the relations 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 \label{sec:summary}
+
+{\tt gPhoton}
 
 we have provided the first independent verification of slow fading of this target
 
