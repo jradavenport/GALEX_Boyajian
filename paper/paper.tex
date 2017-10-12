@@ -57,10 +57,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-{\bf rewrite!}
-The enigmatic star KIC 8462852, also known as ``Boyajian's Star'',  has puzzled for both its short (days) length dimming events, and a years-long secular dimming observed by the \Kepler mission.
-GALEX provides both short timescale sampling from the photon-counting data, and longer baseline data from multiple campaigns that imaged this field/ also providing a wide wavelength baseline to compare with the optical \Kepler data, and provide important constraint for models of this system.
-here we investigate both the short and long timescale data. from 4 GALEX visits totaling 1600 seconds of exposure time in 2011, spread over 70 days, we find no coherent NUV variability in the system on 10--100 sec timescales during these time windows. Comparing the integrated flux from these 2011 visits to the 2012 NUV flux published in the GALEX-CAUSE Kepler survey, we find a 3\% decrease in brightness of KIC 8462852. This decrease is the first  validation of the secular fading reported by \citet{montet2016} not in optical wavelengths. The similar amplitudes between the NUV and optical data rule out typical interstellar dust as the cause of this fading.
+%{\bf rewrite!}
+The enigmatic star KIC 8462852, also known as ``Boyajian's Star'',  has exhibited unexplained variability from both short timescale (days) dimming events, and years-long fading in the \Kepler mission. No single physical mechanism has successfully explained these observations to date.
+Here we investigate the ultraviolet variability of KIC 8462852 on a range of timescales using data from the GALEX mission that occurred contemporaneously with the \Kepler mission. The wide wavelength baseline between the \Kepler and GALEX data provides a unique constraint on the nature of the variability.
+Using 1600 seconds of photon-counting data from four GALEX visits spread over 70 days in 2011, we find no coherent NUV variability in the system on 10--100 second or months timescales.
+Comparing the integrated flux from these 2011 visits to the 2012 NUV flux published in the GALEX-CAUSE Kepler survey, we find a 3\% decrease in brightness for KIC 8462852. We find this level of variability is significant, but not necessarily unusual for stars of similar spectral type in the GALEX data.
+This decrease coincides with the secular optical fading reported by \citet{montet2016}. We find the multi-wavelength variability is not consistent with typical interstellar dust absorption, but instead with a $R_V=5.0\pm0.9$ reddening law.
+%and the comparable amplitudes between the NUV and optical data rule out typical interstellar dust as the cause of this fading.
 \end{abstract}
 
 
@@ -71,29 +74,43 @@ KIC 8462852, also known as ``Boyajian's Star'', is an unusual F3 dwarf in the \K
 
 Analysis of archival optical photographic plates has found that KIC 8462852 may have additionally faded nearly 16\% over the past century \citep{schaefer2016}. Such a precise measurement for a single star is difficult, and the result has been debated \citep{hippke2016}. However, using the 53 ``Full Frame Images'' (FFIs) spread over the 4-year \Kepler mission, \citet{montet2016} were able to trace the brightness of KIC 8462852 using an independent flux calibration. The resulting flux-calibrated FFI light curve showed definitively that KIC 8462852 faded by more than 3\% over 4 years. A years-long timescale variability, with possible periodicity, has recently been confirmed with an analysis of archival ground-based optical photometry \citep{simon2017}.
 
-The short (days) and long (years) timescale variability discovered for KIC 8462852 has presented a unique set of observational constraints for any single model used to describe the system. For example, if variable dust extinction is responsible for both temporal features, then the dust must have a wildly variable density distribution on small spatial scales, and a small density gradient over large spatial scales. Searches for an infrared flux excess consistent with a foreground or circumstellar dust shell have to date found no strong detection \citep[e.g.][]{marengo2015}, further complicating attempts to attribute the variability to dust structures.
+The short (days) and long (years) timescale variability discovered for KIC 8462852 has presented a unique set of observational constraints for any single model used to describe the system. For example, if variable dust extinction is responsible for both temporal features, then the dust must have a wildly variable density distribution on small spatial scales, and a small density gradient over large spatial scales. Searches for an infrared flux excess consistent with a foreground or circumstellar dust shell have found no strong detection \citep[e.g.][]{marengo2015}, further complicating attempts to attribute the variability to dust structures.
 
 
-Since optical variability alone has not produced a single explanation for KIC 8462852, multi-wavelength studies are needed to constrain the nature of the long timescale fading and short timescale dimming. Follow-up multi-band photometric and spectroscopic campaigns are underway\footnote{\url{http://www.wherestheflux.com}}, which will provide an improved understanding of any future ``dips''. However, to date no contemporaneous, multi-wavelength  measurement of the mysterious variability for KIC 8462852 has been available.
+Since optical variability and infrared follow-up has not produced a robust explanation for KIC 8462852, further multi-wavelength studies are needed to constrain the nature of the long timescale fading and short timescale dimming. Multi-band photometric and spectroscopic campaigns are underway\footnote{\url{http://www.wherestheflux.com}}, which will provide an improved understanding of any future ``dips''. However, no multi-wavelength  measurement of the mysterious variability for KIC 8462852 contemporaneous with the \Kepler observations has been analyzed.
 
 
-Archival photometry at ultraviolet wavelengths from the GALEX mission \citep{galex} is now available, and provides an important new dataset for understanding KIC 8462852. This data includes NUV monitoring over a range of time baselines, from seconds to more than a year. Time-tagged photon data has recently been made available for GALEX \citep{million2016}, including a Python toolkit to search for and interact with this high cadence data product called {\tt gPhoton} \citep{gphoton}. This allows us to resample all available GALEX main survey data into any desired cadence. In the case of KIC 8462852, the primary GALEX survey obtained $\sim$1600 seconds of data during four separate visits spread across a $\sim$70 day baseline in 2011. In \S\ref{sec:short} we analyze this NUV data with {\tt gPhoton} sampled at a 10 second cadence, and over the whole 70 day period.
+Archival photometry at ultraviolet wavelengths from the GALEX mission \citep{galex}
+spanning a range of timescales from seconds to more than a year is now available. This unique set of observations occurred during the \Kepler mission, providing an independent constraint on the variability discovered in the \Kepler photometry for KIC 8462852. The wide wavelength range probed by GALEX and \Kepler also allows us to explore models of the variability based on dust extinction and thermal cooling.
 
 
-
-
-The \Kepler field was then revisited by GALEX during a special campaign, dubbed the GALEX-CAUSE Kepler (hereafter GCK) survey. This survey occurred in 2012, and overlapped a portion of the Quarter 14 operations of the original \Kepler mission. Using a ``scan'' observing mode that differed from the standard GALEX survey, the GCK catalog had 1413.8 seconds of data available for KIC 8462852, which was combined into a single stacked exposure of this region \citep{olmedo2015}. Unfortunately, since the observing mode differed from the standard GALEX survey, this GCK data is not available for analysis with {\tt gPhoton} presently. In \S\ref{sec:long} we explore the long timescale evolution of KIC 8462852 between the 2011 and 2012 visits, and compare directly to the observed fading by \citet{montet2016}.
-
+The various GALEX data products used in our analysis are introduced in \S\ref{sec:data}. In \S\ref{sec:short} we analyze the NUV data over 10--100 second timescales. In \S\ref{sec:long} we explore the long timescale evolution of KIC 8462852 between the 2011 and 2012 visits, and compare directly to the observed fading by \citet{montet2016}.
 In \S\ref{sec:dust} we discuss possible interpretations for the nature of KIC 8462852 that the combined \Kepler and GALEX observations provide, including an estimate of the dust extinction properties necessary to reproduce the long timescale NUV observations. Finally in \S\ref{sec:summary} we summarize this work, and discuss the potential utility of GALEX in the study of other rare and unusual variable \Kepler objects.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\section{GALEX Observations}
+\label{sec:data}
+
+Time-tagged photon data has recently become available for GALEX \citep{million2016}, including a Python toolkit to search for and interact with this high cadence data product called {\tt gPhoton} \citep{gphoton}. This allows us to resample the GALEX main survey data into any desired cadence. In the case of KIC 8462852, the primary GALEX survey obtained $\sim$1600 seconds of data during four separate visits spread across a $\sim$70 day baseline in 2011. These high-cadence data from 2011 are also co-added as part of the GALEX ``GR6'' data release \citep{bianchi2014}.
+
+
+As part of the GALEX Complete All-Sky UV Survey Extension (CAUSE) program, 104 square degrees within the \Kepler field were re-observed in the NUV, creating the GALEX-CAUSE Kepler survey (hereafter GCK).
+This survey occurred in 2012, and overlapped a portion of the Quarter 14 operations from the original \Kepler mission. The GCK data was obtained using a drift-scan observing mode that differed from the standard GALEX survey.
+A catalog of the integrated fluxes and uncertainties for 475,164 \Kepler targets observed in GCK, including for KIC 8462852, was made available by \citet{olmedo2015}. In the case of KIC 8462852, the GCK catalog utilizes 1413.8 seconds of integration in 2012. Unfortunately, since the observing mode differed from the standard GALEX survey,  GCK data is not available for time-series analysis with {\tt gPhoton} presently. 
+
+
 
 
 %%%%%
 \begin{figure}[!t]
 \centering
-\includegraphics[width=2.7in]{KIC8462852_0_lc}
-\includegraphics[width=2.7in]{KIC8462852_1_lc}
-\includegraphics[width=2.7in]{KIC8462852_2_lc}
-\includegraphics[width=2.7in]{KIC8462852_3_lc}
+\includegraphics[width=3in]{KIC8462852_0_lc}
+\includegraphics[width=3in]{KIC8462852_1_lc}
+\includegraphics[width=3in]{KIC8462852_2_lc}
+\includegraphics[width=3in]{KIC8462852_3_lc}
 \caption{
 Light curves from {\tt gPhoton} sampled at a 10-second cadence for the 4 visits in 2012. All epochs are shown (grey), while those having no photometric warning flags set are highlight (blue). Error bars shown are the photometric errors for each point computed by {\tt gPhoton}.}
 \label{fig:shorttime}
@@ -106,15 +123,17 @@ Light curves from {\tt gPhoton} sampled at a 10-second cadence for the 4 visits 
 \label{sec:short}
 
 Within each of the four primary mission GALEX visits available for KIC 8462852 we searched for short timescale variability using {\tt gPhoton}. While nano-second optical variability has been investigated for this target \citep{abeysekara2016}, few other studies have looked at variability on timescales shorter than the 30-minute cadence available with \Kepler.
-The four GALEX visits in 2011 ranged from $\sim$70 to $\sim$1400 seconds in duration. Data for each visit was sampled at a 10-second cadence with {\tt gPhoton}, as shown in Figure \ref{fig:shorttime}. Small amplitude variability is apparent in several of the visits, with coherent structure over durations of approximately 60-100 seconds. Computing a Lomb-Scargle periodogram using {\tt gatspy} \citep{gatspy}, we find moderate power with a broad peak at around 80-seconds. This appears to be due to the $\sim$120 second observing cycle of the GALEX instrument in the standard ``Petal Pattern'' observing mode, and we believe is not astrophysically significant. {\bf FINAL WORD: nearby star from David Wilson doesn't show this structure. Is this the Petal Pattern or not? }
+The four GALEX visits in 2011 ranged from $\sim$70 to $\sim$1400 seconds in duration. Data for each visit was sampled at a 10-second cadence with {\tt gPhoton}, as shown in Figure \ref{fig:shorttime}. Small amplitude variability is apparent in several of the visits, with coherent structure over durations of approximately 60-100 seconds. Computing a Lomb-Scargle periodogram using {\tt gatspy} \citep{gatspy}, we find moderate power with a broad peak at around 80-seconds. This appears to be due to the $\sim$120 second observing cycle of the GALEX instrument in the standard ``Petal Pattern'' observing mode, and we believe is not astrophysically significant. 
+%{\bf FINAL WORD: nearby star from David Wilson doesn't show this structure. Is this the Petal Pattern or not? }
 
 
-A periodic signal of 0.88 days was found in \Kepler, which was presumed by \citet{boyajian2015} to be due to the rotation of starspots in- and out-of view on the surface of KIC 8462852. However, the four GALEX visits shown in Figure \ref{fig:shorttime} are too short to capture this rotation signature, and thus our GALEX data are not able to explore variability at this timescale.
+A periodic signal of 0.88 days was also found in the \Kepler photometry, which was presumed by \citet{boyajian2015} to be due to the rotation of starspots in- and out-of view on the surface of KIC 8462852. We do not recover such a signal in our 10-second cadence data. However, each of the four GALEX visits shown in Figure \ref{fig:shorttime} are too short to entirely capture this rotation signature, and thus our GALEX data are not able to explore variability at this timescale.
 
 
 
 
-Since the standard GALEX data for this target was spread over four separate visits, we also examined the medium-timescale variability over $\sim$70 days. In Figure \ref{fig:medtime} we show the median flux from within each of the {\tt gPhoton}-processed visits. The uncertainties shown in Figure \ref{fig:medtime} are computed as the standard deviation in the 10-sec sampled data within each visit, and are $\sim$10x larger than the statistical error on each visit's median flux. Unfortunately this 70-day time window did not correspond to any of the previously identified dimming events from \citet{boyajian2015}. Though there is scatter between these four visits in Figure \ref{fig:medtime}, no significant coherent variability is seen on this intermediate timescale with GALEX.
+Since the standard GALEX data for this target was spread over four separate visits, we also examined the medium-timescale variability over $\sim$70 days. In Figure \ref{fig:medtime} we show the median flux from each of the four {\tt gPhoton}-processed visits. The uncertainties shown are computed as the standard deviation in the 10-sec sampled data within each visit, and are $\sim$10x larger than the statistical error on each visit's median flux.  Though there is scatter between these four visits in Figure \ref{fig:medtime}, no significant coherent variability is seen on this intermediate timescale with GALEX. Unfortunately this 70-day time window also did not correspond to any of the previously identified dimming events from \citet{boyajian2015}.
+
 
 
 %%%%%
@@ -134,6 +153,17 @@ Since the standard GALEX data for this target was spread over four separate visi
 \section{Long Timescale Variability}
 \label{sec:long}
 
+
+In Figure \ref{fig:longtime} we present the GALEX data for this target as observed in 2011 and 2012. The 2011 data represents the final GALEX GR6 catalog flux value for KIC 8462852 of $16.46 \pm 0.01$ mag from \citet{bianchi2014}. The 2012 data is from the GCK data from \citet{olmedo2015}, and measured a NUV brightness for KIC 8462852 of $16.499\pm0.006$ mag. Both apparent NUV magnitudes were converted to fluxes, and then  normalized to the flux of the 2011 visit. This results in a measured NUV fading of 3.5 $\pm$ 1.0\%.
+
+In Figure \ref{fig:longtime} we also show the slow fading discovered in the \Kepler FFI's by \citet{montet2016}. Note: the fact that the GALEX and \Kepler FFI data are normalized to a relative flux of 1 around 2011 (MJD$\sim$55700) is a coincidence. However, the observation that the GALEX flux decays coherently with the \Kepler FFI flux over this time baseline is significant.
+% Importantly, this is the first multi-wavelength confirmation of the slow fading reported by \citet{montet2016} for KIC 8462852.
+
+
+To determine what the typical variation in NUV flux is for F stars, we compared the GALEX GR6 and GCK measurements for over 140,000 \Kepler stars found in both datasets. Note the original GALEX GR6 data was not available over the entire Kepler footprint, and was not taken over a single observing window 2011 for all targets as for KIC 8462852. The timescales between GR6 and GCK visits may therefore vary widely. A full analysis of this comparison, while beyond the scope of our work here, is underway (M. Olmedo et al. in preparation). With this large comparison set we found that stars with temperatures near KIC 8462852 (6750 K) have an average variation between these two epochs of 2.5\%. The 3.5\% NUV variation seen for KIC 8462852 is therefore significant and believable, but not necessarily abnormal for stars of this spectral type.
+
+
+
 %%%%%
 \begin{figure}[!t]
 \centering
@@ -145,18 +175,8 @@ Comparison of the 2011 and 2012 fluxes for KIC 8462852 as measured by GALEX (blu
 \end{figure}
 
 
-While the standard GALEX survey data available within {\tt gPhoton} only sampled $\sim$70 days within 2011, the \Kepler field was fortunately re-observed with GALEX in 2012. As part of the GALEX Complete All-Sky UV Survey Extension (CAUSE) program, 104 square degrees within the \Kepler field were re-observed in the NUV, creating the GALEX-CAUSE Kepler survey (GCK). This GCK data was obtained using a drift-scan mode, which was processed using a custom pipeline, and is therefore not available for photon-counting analysis with the {\tt gPhoton} toolkit at this time. A catalog of the integrated fluxes and uncertainties for 475,164 \Kepler targets observed in GCK, including for KIC 8462852, was made available by \citet{olmedo2015}.
-
-
-In Figure \ref{fig:longtime} we present the GALEX data for this target as observed in 2011 and 2012. The 2011 data represents the final GALEX GR6 catalog flux value for KIC 8462852 of $16.46 \pm 0.01$ mag from \citet{bianchi2014}, while the 2012 data is from the GCK data of $16.499\pm0.006$ mag from \citet{olmedo2015}. Both data were converted to fluxes, and then were normalized to the flux of the 2011 visit. For comparison we also show the slow fading discovered in the \Kepler FFI's by \citet{montet2016}. Note: the fact that the GALEX and \Kepler FFI data are normalized to a relative flux of 1 around 2011 (MJD$\sim$55700) is a coincidence. However, the fact that the GALEX flux decays coherently with the \Kepler FFI flux over this time baseline is significant. Importantly, this is the first multi-wavelength confirmation of the slow fading reported by \citet{montet2016} for KIC 8462852.
-
-{\bf FINAL WORD: get ~50 nearby stars, make sure GALEX vs GCK data isn't a systematic problem}
-
-
-
-
 % short summary of Riley's WISE investigation..
-For comparison we also examined the WISE single-exposure source database using the W1-band (3.4$\mu$m) to search for long timescale variability. This dataset from the original WISE mission \citep{wise}, and the NEOWISE extended mission \citep{mainzer2014} provides $\sim$2-day clusters of photometry spaced every 6 months due to the spacecraft roll pattern. Unfortunately the GALEX observations for KIC 8462852 occurred during the observation gap between WISE and NEOWISE, and thus a direct comparison between the NUV and IR is not possible here.
+As an aside, we also searched for long timescale variability for KIC 8462852 in the infrared from the WISE single-exposure source database using the W1-band (3.4$\mu$m). This dataset from the original WISE mission \citep{wise}, and the NEOWISE extended mission \citep{mainzer2014} provides $\sim$2-day clusters of photometry spaced every 6 months due to the spacecraft roll pattern. Unfortunately the GALEX observations for KIC 8462852 occurred during the observation gap between WISE and NEOWISE, and thus a direct comparison between the NUV and IR is not possible here.
 We found no clear  long-term variability spanning 2009 through 2017 for KIC 8462852 in the W1-band. However, a more detailed comparison of this rich IR dataset to the recently published work from \citet{simon2017} and \citet{meng2017} is warranted.
 
 
@@ -165,7 +185,7 @@ We found no clear  long-term variability spanning 2009 through 2017 for KIC 8462
 \section{Implications for the Nature of KIC 8462852}
 \label{sec:dust}
 
-While many explanations for the nature of KIC 8462852 have been proposed, there is effectively no consensus on the nature of the years-long timescale fading (or variability) observed by \citet{montet2016} and confirmed here. Critically, with only a single wavelength band available from \Kepler, and no apparent characteristic timescale for this variation with the 4-year observing window, little can be constrained from the \Kepler data alone. \citet{metzger2017} have argued the long-timescale fading could be due to stellar atmosphere recovery after a planetary in-spiral, and possibly the short-timescale dips are due to remaining debris. \citet{montet2016} note the fading in the \Kepler FFI's may be due to the transit of a dust cloud. However none of these models definitively explain the long-timescale variability observed in \citet{montet2016}.  
+While many explanations for the nature of KIC 8462852 have been proposed, there is effectively no consensus on the nature of the years-long timescale fading (or variability) observed by \citet{montet2016} and confirmed here in the NUV. Critically, with only a single wavelength band available no apparent characteristic timescale for this variation with the 4-year observing window, little can be constrained from the \Kepler data alone. \citet{metzger2017} have argued the long-timescale fading could be due to stellar atmosphere recovery after a planetary in-spiral, and possibly the short-timescale dips are due to remaining debris. \citet{montet2016} note the fading in the \Kepler FFI's may be due to the transit of a dust cloud. However none of these models definitively explain the long-timescale variability observed in \citet{montet2016}.  
 
 
 By combining the optical \Kepler FFI light curve with the long-timescale GALEX NUV data presented here, we can place the first multi-wavelength constraints on KIC 8462852. A natural model to compare the simultaneous variability in the NUV and optical is that of a dust cloud. Extinction by dust in the interstellar medium is well studied, and several models with varying dust compositions are available at these wavelengths. Regardless of {\it where} the dust originates (i.e. circumstellar versus interstellar), such extinction models are a useful path forward in exploring the fading of KIC 8462852.
@@ -182,32 +202,29 @@ To demonstrate the impact dust would have in these two bands, we computed the ex
 \end{figure}
 
 
-However, the NUV response of dust models is highly dependent on grain composition. This can be explored in standard dust models by modifying the $R_V$ parameter. We then tuned a dust model to match both the observed \Kepler optical and GALEX NUV dimming by varying the $R_V$ and specific extinction ($A_V$) parameters. To fit the fading in both wavelengths simultaneously requires a dust model with  $R_V=5.0\pm0.9$. This is not typical for interstellar extinction material, such a high $R_V$ has been reported for example around young protostars \citep[e.g.][]{hecht1982}. Competing dust models can produce significantly different NUV extinctions. For example, by modeling the \Kepler and GALEX fading for KIC 8462852 shown in Figure \ref{fig:longtime} with a \citet{fitzpatrick2009} dust model, we find a best-fit parameter of $R_V=5.8\pm1.6$. Note that a similarly large value for the reddening law ($R_V>5$) was recently reported for KIC 8462852 over a different timespan by \citet{meng2017}.
+However, the NUV response of dust models is highly dependent on grain composition. This can be explored in standard dust models by modifying the $R_V$ parameter. We then tuned a dust model to match both the observed \Kepler optical and GALEX NUV dimming by varying the $R_V$ and specific extinction ($A_V$) parameters. To fit the fading in both wavelengths simultaneously requires a dust model with  $R_V=5.0\pm0.9$. This is not typical for interstellar extinction material, such a high $R_V$ has been reported for example around young protostars \citep[e.g.][]{hecht1982}. Competing dust models can produce significantly different NUV extinctions. For example, by modeling the \Kepler and GALEX fading for KIC 8462852 shown in Figure \ref{fig:longtime} with a \citet{fitzpatrick2009} dust model, we find a best-fit parameter of $R_V=5.8\pm1.6$. Note that a similarly large value for the reddening law ($R_V>5$) was recently reported for KIC 8462852 over a different timespan by \citet{meng2017}. \citet{simon2017} also find the dimming is weaker at redder optical wavelengths, broadly consistent with either dust extinction or temperature variations.
 
 
 If the slow fading is indeed due to the transit of a dust cloud or circumstellar material, we can further put a constraint on how much dust should be present. Based on relations from \citep{guver2009}, we find that an extinction of $A_V = 0.026$ mag is needed to fit the fading with the \citet{cardelli1989} dust model, which corresponds to a column density of $N_H\sim5\e{19}$ cm$^{-2}$ . Similarly, using the relations from \citet{rachford2002} that have some dependence on dust composition ($R_V$), we find an estimated column density of $N_H\sim4.0\e{19}$ cm$^{-2}$,  given $A_V = 0.026$ and $R_V=5.08$. 
 However, this high of a column density poses an intriguing challenge given the lack of warm circumstellar dust detection by \citet{thompson2016}.
 
-%%%
-\citet{simon2017} find the dimming is weaker at redder optical wavelengths, broadly consistent with either dust extinction or temperature variations.
 
-BLACKBODY INFO
-if we match the \Kepler drop and assume a quiescent temperature of 6750, requires a blackbody change of 41+/-3 K. this in turn predicts a NUV drop of 5\%, which is in weak tension with the observation of 0.965+/-0.010 flux from GALEX.
+Besides dust extinction, another simple model that can be invoked to fit the long timescale variations of KIC 8462852 is changes in the star's effective surface temperature. We carried out a toy model calculation of this cooling, assuming a quiescent blackbody temperature of 6750 K for the star., and flux variations in each wavelength band due to changes in blackbody temperatures. The \Kepler FFI fading seen by \citet{montet2016} over the same time windows as our GALEX observations requires a temperature change of 41$\pm$3 K. This temperature change in turn predicts a drop in the NUV flux of 5\%, which is in weak tension with our observed flux change of $3.5\pm1.0$\%.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}
 \label{sec:summary}
+We have undertaken the first exploration of the NUV variability for KIC 8462852, using GALEX data on a range of timescales. No significant variability is found on 10-100 second timescales using NUV light curves produced with {\tt gPhoton}. Over four visits spanning 70 days in 2011, we also find no significant medium-term variability.
 
-explored short timescale variability with {\tt gPhoton} on seconds timescales, and on 70 day window. nothing significant at NUV wavelengths.
+Comparing co-added data from 2011 with a follow-up GALEX study of the \Kepler field in 2012, we find that KIC 8462852 faded by 3.5\%. This fading coincides with the slow variation reported by \citet{montet2016}, and is the first verification that this star is variable in the NUV.
 
-using 2011 and 2012 detections with GALEX we have provided the first independent verification of slow fading of this target
+Though the long timescale NUV light curve is very sparsely sampled, the combination of NUV and optical wavelengths provides a powerful constrain on the nature of this slow dimming. We explored both dust extinction and thermal variations as possible causes for the long timescale fading. Our favored explanation from these NUV data is that KIC 8462852 may be occulted by a slowly changing column density of dust with $R_V=5$.
 
-though the long timescale light curve is very sparsely sampled, the combination of NUV and optical wavelengths provides a powerful constrain on the nature of this slow dimming. 
+Finally, GALEX provides us with a valuable new dataset for use in the search for other objects of this class. We are able to expand the search criteria beyond dramatic short timescale events and slow dimming as observed with \Kepler, to now include slow variability in the NUV. If other F-type stars are found with similar multi-wavelength variability over long timescales, it will shed light important on the occurrence rate and possible lifetime of `Boyajian's Star'' type variables. 
 
-In the hunt for other objects of this class, we are able to expand our search criteria beyond the dramatic short timescale events and slow dimming observed with \Kepler, to now include slow variability in the NUV. 
 
-%new papers: \citep{meng2017} (new extinction, confirms our Rv), simon2017 (no long-term effect, but confirms slow fading over this timescale), %rappaport2017 (exocomets may explain short timescale dips)
 
 %%%%%%%%%%%%%%%%%
 \acknowledgments
@@ -223,6 +240,6 @@ Part of this research was carried out at the Jet Propulsion Laboratory, Californ
 
 
 %%%%%%%%%%%%%%%%%
-\bibliography{/Users/davenpj3/Dropbox/references.bib}
+\bibliography{/Users/james/Dropbox/references.bib}
 
 \end{document}
