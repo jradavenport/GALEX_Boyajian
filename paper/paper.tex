@@ -38,7 +38,10 @@
 	Chase C. Million\altaffilmark{7},
 	David J. Wilson\altaffilmark{8},
 	Manuel Olmedo\altaffilmark{9},
-	Eric E. Mamajek\altaffilmark{10,11}
+	Eric E. Mamajek\altaffilmark{10,11}\\
+	Daniel Olmedo\altaffilmark{9}, 
+	Miguel Ch\'{a}vez\altaffilmark{9},
+	Emanuele Bertone\altaffilmark{9}
 	}
 
 \altaffiltext{1}{Department of Physics \& Astronomy, Western Washington University, 516 High St., Bellingham, WA 98225, USA}
@@ -98,7 +101,7 @@ Time-tagged photon data has recently become available for GALEX \citep{million20
 
 
 As part of the GALEX Complete All-Sky UV Survey Extension (CAUSE) program, 104 square degrees within the \Kepler field were re-observed in the NUV, creating the GALEX-CAUSE Kepler survey (hereafter GCK).
-This survey occurred in 2012, and overlapped a portion of the Quarter 14 operations from the original \Kepler mission. The GCK data was obtained using a drift-scan observing mode that differed from the standard GALEX survey.
+This survey occurred in 2012, and overlapped a portion of the Quarter 14 operations from the original \Kepler mission. The GCK data was obtained using scan-mode observing that differed from the standard GALEX survey.
 A catalog of the integrated fluxes and uncertainties for 475,164 \Kepler targets observed in GCK, including for KIC 8462852, was made available by \citet{olmedo2015}. In the case of KIC 8462852, the GCK catalog utilizes 1413.8 seconds of integration in 2012. Unfortunately, since the observing mode differed from the standard GALEX survey,  GCK data is not available for time-series analysis with {\tt gPhoton} presently. 
 
 
@@ -122,7 +125,7 @@ Light curves from {\tt gPhoton} sampled at a 10-second cadence for the 4 visits 
 \section{Short Timescale Variability}
 \label{sec:short}
 
-Within each of the four primary mission GALEX visits available for KIC 8462852 we searched for short timescale variability using {\tt gPhoton}. While nano-second optical variability has been investigated for this target \citep{abeysekara2016}, few other studies have looked at variability on timescales shorter than the 30-minute cadence available with \Kepler.
+Within each of the four primary mission GALEX visits available for KIC 8462852 we searched for short timescale variability using {\tt gPhoton}\footnote{Using {\tt gPhoton} version 1.28.2}. While nano-second optical variability has been investigated for this target \citep{abeysekara2016}, few other studies have looked at variability on timescales shorter than the 30-minute cadence available with \Kepler.
 The four GALEX visits in 2011 ranged from $\sim$70 to $\sim$1400 seconds in duration. Data for each visit was sampled at a 10-second cadence with {\tt gPhoton}, as shown in Figure \ref{fig:shorttime}. Small amplitude variability is apparent in several of the visits, with coherent structure over durations of approximately 60-100 seconds. Computing a Lomb-Scargle periodogram using {\tt gatspy} \citep{gatspy}, we find moderate power with a broad peak at around 80-seconds. This appears to be due to the $\sim$120 second observing cycle of the GALEX instrument in the standard ``Petal Pattern'' observing mode, and we believe is not astrophysically significant. 
 %{\bf FINAL WORD: nearby star from David Wilson doesn't show this structure. Is this the Petal Pattern or not? }
 
@@ -220,7 +223,7 @@ Besides dust extinction, another simple model that can be invoked to fit the lon
 \label{sec:summary}
 We have undertaken the first exploration of the NUV variability for KIC 8462852, using GALEX data on a range of timescales. No significant variability is found on 10-100 second timescales using NUV light curves produced with {\tt gPhoton}. Over four visits spanning 70 days in 2011, we also find no significant medium-term variability.
 
-Comparing co-added data from 2011 with the follow-up GCK study of the \Kepler field in 2012, we find that KIC 8462852 faded by $3.5\pm1.0$\% in the NUV. This fading coincides with the slow variation reported by \citet{montet2016}, and is the first verification that this star is variable in the NUV. A preliminary examination of the typical variance between the GALEX and GCK data shows an average NUV change of 2.5\% for F-type stars. Thus we believe the NUV fading observed for KIC 8462852 is real, but not necessarily atypical at these wavelengths. 
+Comparing co-added data from 2011 with the follow-up GCK study of the \Kepler field in 2012, we find that KIC 8462852 faded by $3.5\pm1.0$\% in the NUV. This fading coincides with the slow variation reported by \citet{montet2016}, and is the first verification that this star is variable in the NUV. A preliminary examination of the typical variance between the GALEX and GCK data shows an average NUV change of $\sim$3.5\% for bright F-type stars. Thus we believe the NUV fading observed for KIC 8462852 is real, but not necessarily atypical at these wavelengths. 
 
 Though the long timescale NUV light curve is very sparsely sampled, the combination of NUV and optical wavelengths provides a powerful constraint on the nature of this slow dimming. We explored both dust extinction and thermal variations as possible causes for the long timescale fading. Our favored explanation from these NUV data is that KIC 8462852 may be occulted by a slowly changing column density of dust with $R_V=5$.
 
@@ -232,6 +235,8 @@ Finally, GALEX provides us with a valuable new dataset for use in the search for
 \acknowledgments
 We thank Joshua Simon for sharing a draft of their paper prior to publication.
 
+%This document does not contain export controlled information (URS269996)
+
 JRAD is supported by an NSF Astronomy and Astrophysics Postdoctoral Fellowship under award AST-1501418. 
 
 Work by B.T.M. was performed under contract with the Jet Propulsion Laboratory (JPL) funded by NASA through the Sagan Fellowship Program executed by the NASA Exoplanet Science Institute.
@@ -242,6 +247,6 @@ Part of this research was carried out at the Jet Propulsion Laboratory, Californ
 
 
 %%%%%%%%%%%%%%%%%
-\bibliography{/Users/james/Dropbox/references.bib}
+\bibliography{/Users/davenpj3/Dropbox/references.bib}
 
 \end{document}
